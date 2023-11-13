@@ -1,10 +1,10 @@
-# LiteLink
+# Lite-Link
 
-LiteLink is a simple Node.js module that provides URL shortening functionality using Redis as the backend storage.
+Lite-Link is a simple Node.js module that provides URL shortening functionality using Redis as the backend storage.
 
 ## Installation
 
-To use LiteLink in your Node.js project, install it via npm:
+To use Lite-Link in your Node.js project, install it via npm:
 
 ```bash
 npm install lite-link
@@ -14,10 +14,10 @@ npm install lite-link
 ## Use Case: Shortening URLs for Social Media Sharing
 
 **Scenario**:
-You are developing a web application that allows users to share content on various social media platforms. However, the URLs of the shared content are often long and cumbersome. To enhance the user experience and improve the aesthetics of shared posts, you decide to implement a URL shortening feature using LiteLink.
+You are developing a web application that allows users to share content on various social media platforms. However, the URLs of the shared content are often long and cumbersome. To enhance the user experience and improve the aesthetics of shared posts, you decide to implement a URL shortening feature using Lite-Link.
 
 Example:
-Step 1: Initialize LiteLink
+Step 1: Initialize Lite-Link
 
 ```javascript
 const { LiteLink } = require('lite-link');
@@ -26,7 +26,7 @@ const Redis = require('ioredis');
 // Create an ioredis instance
 const redisClient = new Redis();
 
-// Create an instance of LiteLink with your Redis client
+// Create an instance of Lite-Link with your Redis client
 const liteLink = new LiteLink({ client: redisClient });
 ```
 
@@ -35,7 +35,7 @@ Step 2: Shorten URLs for Social Media Sharing
 // Original long URL of the shared content
 const longUrl = 'https://your-website.com/articles/article-title';
 
-// Shorten the URL using LiteLink
+// Shorten the URL using Lite-Link
 const shortKey = await liteLink.shortenUrl(longUrl);
 
 // Construct the short URL to be shared on social media
@@ -51,7 +51,7 @@ Step 3: Handling Redirects
 // Extract the short key from the incoming request
 const shortKeyFromRequest = /* Extract the short key from the request parameters */;
 
-// Retrieve the original URL using LiteLink
+// Retrieve the original URL using Lite-Link
 const originalUrl = await liteLink.getOriginalUrl(shortKeyFromRequest);
 
 // Redirect the user to the original URL
@@ -60,9 +60,9 @@ const originalUrl = await liteLink.getOriginalUrl(shortKeyFromRequest);
 res.redirect(301, originalUrl);
 ```
 
-In this use case, LiteLink is utilized to make shared content URLs more user-friendly on social media. The process involves shortening the original long URL into a compact and memorable short key. When users click on the short URL, LiteLink helps retrieve the original URL, allowing for a seamless redirect to the actual content.
+In this use case, Lite-Link is utilized to make shared content URLs more user-friendly on social media. The process involves shortening the original long URL into a compact and memorable short key. When users click on the short URL, Lite-Link helps retrieve the original URL, allowing for a seamless redirect to the actual content.
 
-This use case demonstrates how LiteLink can enhance the user experience by simplifying URLs, making them more suitable for sharing on social media platforms where character limits may apply.
+This use case demonstrates how Lite-Link can enhance the user experience by simplifying URLs, making them more suitable for sharing on social media platforms where character limits may apply.
 
 
 ## Usage
@@ -74,7 +74,7 @@ const Redis = require('ioredis');
 // Create an ioredis instance
 const yourRedisClient = new Redis();
 
-// Create an instance of LiteLink with your Redis client
+// Create an instance of Lite-Link with your Redis client
 const liteLink = new LiteLink({ client: yourRedisClient });
 
 // Shorten a URL
@@ -93,7 +93,7 @@ const flushResult = await liteLink.flushKeys();
 
 ###### Configuration Options
 
-LiteLink supports the following configuration options:
+Lite-Link supports the following configuration options:
 
 - client: An instance of the ioredis client for connecting to Redis.
 - prefix (optional): A prefix to be added to all keys in Redis. Default is "lite-link:".
