@@ -1,10 +1,10 @@
-# Short-Link
+# Tiny-Link
 
-Short-Link is a simple Node.js module that provides URL shortening functionality using Redis as the backend storage.
+Tiny-Link is a simple Node.js module that provides URL shortening functionality using Redis as the backend storage.
 
 ## Installation
 
-To use Short-Link in your Node.js project, install it via npm:
+To use Tiny-Link in your Node.js project, install it via npm:
 
 ```bash
 npm install tiny-link
@@ -14,10 +14,10 @@ npm install tiny-link
 ## Use Case: Shortening URLs for Social Media Sharing
 
 **Scenario**:
-You are developing a web application that allows users to share content on various social media platforms. However, the URLs of the shared content are often long and cumbersome. To enhance the user experience and improve the aesthetics of shared posts, you decide to implement a URL shortening feature using Short-Link.
+You are developing a web application that allows users to share content on various social media platforms. However, the URLs of the shared content are often long and cumbersome. To enhance the user experience and improve the aesthetics of shared posts, you decide to implement a URL shortening feature using Tiny-Link.
 
 Example:
-Step 1: Initialize Short-Link
+Step 1: Initialize Tiny-Link
 
 ```javascript
 const { TinyLink } = require('tiny-link');
@@ -26,7 +26,7 @@ const Redis = require('ioredis');
 // Create an ioredis instance
 const redisClient = new Redis();
 
-// Create an instance of Short-Link with your Redis client
+// Create an instance of Tiny-Link with your Redis client
 const tinyLink = new TinyLink({ client: redisClient });
 ```
 
@@ -35,7 +35,7 @@ Step 2: Shorten URLs for Social Media Sharing
 // Original long URL of the shared content
 const longUrl = 'https://your-website.com/articles/article-title';
 
-// Shorten the URL using Short-Link
+// Shorten the URL using Tiny-Link
 const shortKey = await tinyLink.shortenUrl(longUrl);
 // Example Output: "x7l8UcP-2XJpWvR_q0HkD"
 
@@ -51,7 +51,7 @@ Step 3: Handling Redirects
 // Extract the short key from the incoming request
 const shortKeyFromRequest = /* Extract the short key from the request parameters */;
 
-// Retrieve the original URL using Short-Link
+// Retrieve the original URL using Tiny-Link
 const originalUrl = await tinyLink.getOriginalUrl(shortKeyFromRequest);
 
 // Redirect the user to the original URL
@@ -60,9 +60,9 @@ const originalUrl = await tinyLink.getOriginalUrl(shortKeyFromRequest);
 res.redirect(301, originalUrl);
 ```
 
-In this use case, Short-Link is utilized to make shared content URLs more user-friendly on social media. The process involves shortening the original long URL into a compact and memorable short key. When users click on the short URL, Short-Link helps retrieve the original URL, allowing for a seamless redirect to the actual content.
+In this use case, Tiny-Link is utilized to make shared content URLs more user-friendly on social media. The process involves shortening the original long URL into a compact and memorable short key. When users click on the short URL, Tiny-Link helps retrieve the original URL, allowing for a seamless redirect to the actual content.
 
-This use case demonstrates how Short-Link can enhance the user experience by simplifying URLs, making them more suitable for sharing on social media platforms where character limits may apply.
+This use case demonstrates how Tiny-Link can enhance the user experience by simplifying URLs, making them more suitable for sharing on social media platforms where character limits may apply.
 
 
 ## Usage
@@ -74,7 +74,7 @@ const Redis = require('ioredis');
 // Create an ioredis instance
 const yourRedisClient = new Redis();
 
-// Create an instance of Short-Link with your Redis client
+// Create an instance of Tiny-Link with your Redis client
 const tinyLink = new TinyLink({ client: yourRedisClient });
 
 // Shorten a URL
@@ -93,7 +93,7 @@ const flushResult = await tinyLink.flushKeys();
 
 ###### Configuration Options
 
-Short-Link supports the following configuration options:
+Tiny-Link supports the following configuration options:
 
 - client: An instance of the ioredis client for connecting to Redis.
 - prefix (optional): A prefix to be added to all keys in Redis. Default is "tiny-link:".
