@@ -37,13 +37,13 @@ const longUrl = 'https://your-website.com/articles/article-title';
 
 // Shorten the URL using Lite-Link
 const shortKey = await liteLink.shortenUrl(longUrl);
+// Example Output: "hR-5deQs"
 
 // Construct the short URL to be shared on social media
 const shortUrl = `https://your-short-domain/${shortKey}`;
 
 // Now, users can share the short URL on social media platforms
 console.log('Shortened URL for Social Media:', shortUrl);
-// Example Output: "hR-5deQs"
 ```
 
 Step 3: Handling Redirects
