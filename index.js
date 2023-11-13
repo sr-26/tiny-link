@@ -57,7 +57,7 @@ class LiteLink {
         try {
             const keys = await this.redis.keys(`${this.prefix}*`);
             if (keys.length === 0) {
-                return 'No keys to flush';
+                return 0;
             }
             const pipeline = this.redis.pipeline();
             keys.forEach((key) => {
