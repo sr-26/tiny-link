@@ -1,33 +1,33 @@
-# Lite-Link
+# Short-Link
 
-Lite-Link is a simple Node.js module that provides URL shortening functionality using Redis as the backend storage.
+Short-Link is a simple Node.js module that provides URL shortening functionality using Redis as the backend storage.
 
 ## Installation
 
-To use Lite-Link in your Node.js project, install it via npm:
+To use Short-Link in your Node.js project, install it via npm:
 
 ```bash
-npm install lite-link
+npm install short-link
 ```
 
 
 ## Use Case: Shortening URLs for Social Media Sharing
 
 **Scenario**:
-You are developing a web application that allows users to share content on various social media platforms. However, the URLs of the shared content are often long and cumbersome. To enhance the user experience and improve the aesthetics of shared posts, you decide to implement a URL shortening feature using Lite-Link.
+You are developing a web application that allows users to share content on various social media platforms. However, the URLs of the shared content are often long and cumbersome. To enhance the user experience and improve the aesthetics of shared posts, you decide to implement a URL shortening feature using Short-Link.
 
 Example:
-Step 1: Initialize Lite-Link
+Step 1: Initialize Short-Link
 
 ```javascript
-const { LiteLink } = require('lite-link');
+const { ShortLink } = require('short-link');
 const Redis = require('ioredis');
 
 // Create an ioredis instance
 const redisClient = new Redis();
 
-// Create an instance of Lite-Link with your Redis client
-const liteLink = new LiteLink({ client: redisClient });
+// Create an instance of Short-Link with your Redis client
+const shortLink = new ShortLink({ client: redisClient });
 ```
 
 Step 2: Shorten URLs for Social Media Sharing
@@ -35,8 +35,8 @@ Step 2: Shorten URLs for Social Media Sharing
 // Original long URL of the shared content
 const longUrl = 'https://your-website.com/articles/article-title';
 
-// Shorten the URL using Lite-Link
-const shortKey = await liteLink.shortenUrl(longUrl);
+// Shorten the URL using Short-Link
+const shortKey = await shortLink.shortenUrl(longUrl);
 // Example Output: "x7l8UcP-2XJpWvR_q0HkD"
 
 // Construct the short URL to be shared on social media
@@ -51,8 +51,8 @@ Step 3: Handling Redirects
 // Extract the short key from the incoming request
 const shortKeyFromRequest = /* Extract the short key from the request parameters */;
 
-// Retrieve the original URL using Lite-Link
-const originalUrl = await liteLink.getOriginalUrl(shortKeyFromRequest);
+// Retrieve the original URL using Short-Link
+const originalUrl = await shortLink.getOriginalUrl(shortKeyFromRequest);
 
 // Redirect the user to the original URL
 // This depends on your server framework (e.g., Express, Koa)
@@ -60,43 +60,43 @@ const originalUrl = await liteLink.getOriginalUrl(shortKeyFromRequest);
 res.redirect(301, originalUrl);
 ```
 
-In this use case, Lite-Link is utilized to make shared content URLs more user-friendly on social media. The process involves shortening the original long URL into a compact and memorable short key. When users click on the short URL, Lite-Link helps retrieve the original URL, allowing for a seamless redirect to the actual content.
+In this use case, Short-Link is utilized to make shared content URLs more user-friendly on social media. The process involves shortening the original long URL into a compact and memorable short key. When users click on the short URL, Short-Link helps retrieve the original URL, allowing for a seamless redirect to the actual content.
 
-This use case demonstrates how Lite-Link can enhance the user experience by simplifying URLs, making them more suitable for sharing on social media platforms where character limits may apply.
+This use case demonstrates how Short-Link can enhance the user experience by simplifying URLs, making them more suitable for sharing on social media platforms where character limits may apply.
 
 
 ## Usage
 
 ```javascript
-const { LiteLink } = require('lite-link');
+const { ShortLink } = require('short-link');
 const Redis = require('ioredis');
 
 // Create an ioredis instance
 const yourRedisClient = new Redis();
 
-// Create an instance of Lite-Link with your Redis client
-const liteLink = new LiteLink({ client: yourRedisClient });
+// Create an instance of Short-Link with your Redis client
+const shortLink = new ShortLink({ client: yourRedisClient });
 
 // Shorten a URL
-const shortKey = await liteLink.shortenUrl('https://example.com');
+const shortKey = await shortLink.shortenUrl('https://example.com');
 
 // Get the original URL
-const originalUrl = await liteLink.getOriginalUrl(shortKey);
+const originalUrl = await shortLink.getOriginalUrl(shortKey);
 
 // Clear a specific key
-const result = await liteLink.deleteKey(shortKey);
+const result = await shortLink.deleteKey(shortKey);
 
 // Flush all keys with a specific prefix
-const flushResult = await liteLink.flushKeys();
+const flushResult = await shortLink.flushKeys();
 
 ```
 
 ###### Configuration Options
 
-Lite-Link supports the following configuration options:
+Short-Link supports the following configuration options:
 
 - client: An instance of the ioredis client for connecting to Redis.
-- prefix (optional): A prefix to be added to all keys in Redis. Default is "lite-link:".
+- prefix (optional): A prefix to be added to all keys in Redis. Default is "short-link:".
 - ttl (optional): Time-to-live for keys in seconds. Default is 0 (no TTL).
 
 ###### Methods
