@@ -7,7 +7,7 @@ Short-Link is a simple Node.js module that provides URL shortening functionality
 To use Short-Link in your Node.js project, install it via npm:
 
 ```bash
-npm install short-link
+npm install tiny-link
 ```
 
 
@@ -20,14 +20,14 @@ Example:
 Step 1: Initialize Short-Link
 
 ```javascript
-const { ShortLink } = require('short-link');
+const { TinyLink } = require('tiny-link');
 const Redis = require('ioredis');
 
 // Create an ioredis instance
 const redisClient = new Redis();
 
 // Create an instance of Short-Link with your Redis client
-const shortLink = new ShortLink({ client: redisClient });
+const tinyLink = new TinyLink({ client: redisClient });
 ```
 
 Step 2: Shorten URLs for Social Media Sharing
@@ -36,7 +36,7 @@ Step 2: Shorten URLs for Social Media Sharing
 const longUrl = 'https://your-website.com/articles/article-title';
 
 // Shorten the URL using Short-Link
-const shortKey = await shortLink.shortenUrl(longUrl);
+const shortKey = await tinyLink.shortenUrl(longUrl);
 // Example Output: "x7l8UcP-2XJpWvR_q0HkD"
 
 // Construct the short URL to be shared on social media
@@ -52,7 +52,7 @@ Step 3: Handling Redirects
 const shortKeyFromRequest = /* Extract the short key from the request parameters */;
 
 // Retrieve the original URL using Short-Link
-const originalUrl = await shortLink.getOriginalUrl(shortKeyFromRequest);
+const originalUrl = await tinyLink.getOriginalUrl(shortKeyFromRequest);
 
 // Redirect the user to the original URL
 // This depends on your server framework (e.g., Express, Koa)
@@ -68,26 +68,26 @@ This use case demonstrates how Short-Link can enhance the user experience by sim
 ## Usage
 
 ```javascript
-const { ShortLink } = require('short-link');
+const { TinyLink } = require('tiny-link');
 const Redis = require('ioredis');
 
 // Create an ioredis instance
 const yourRedisClient = new Redis();
 
 // Create an instance of Short-Link with your Redis client
-const shortLink = new ShortLink({ client: yourRedisClient });
+const tinyLink = new TinyLink({ client: yourRedisClient });
 
 // Shorten a URL
-const shortKey = await shortLink.shortenUrl('https://example.com');
+const shortKey = await tinyLink.shortenUrl('https://example.com');
 
 // Get the original URL
-const originalUrl = await shortLink.getOriginalUrl(shortKey);
+const originalUrl = await tinyLink.getOriginalUrl(shortKey);
 
 // Clear a specific key
-const result = await shortLink.deleteKey(shortKey);
+const result = await tinyLink.deleteKey(shortKey);
 
 // Flush all keys with a specific prefix
-const flushResult = await shortLink.flushKeys();
+const flushResult = await tinyLink.flushKeys();
 
 ```
 
@@ -96,7 +96,7 @@ const flushResult = await shortLink.flushKeys();
 Short-Link supports the following configuration options:
 
 - client: An instance of the ioredis client for connecting to Redis.
-- prefix (optional): A prefix to be added to all keys in Redis. Default is "short-link:".
+- prefix (optional): A prefix to be added to all keys in Redis. Default is "tiny-link:".
 - ttl (optional): Time-to-live for keys in seconds. Default is 0 (no TTL).
 
 ###### Methods

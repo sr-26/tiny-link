@@ -1,12 +1,12 @@
 const { nanoid } = require('nanoid');
 const Redis = require('ioredis');
 
-class ShortLink {
+class TinyLink {
     constructor(opts) {
         if (!opts.client || !(opts.client instanceof Redis)) {
             throw new Error('An ioredis instance must be provided');
         }
-        this.prefix = opts.prefix == null ? "short-link:" : opts.prefix
+        this.prefix = opts.prefix == null ? "tiny-link:" : opts.prefix
         this.redis = opts.client;
         this.ttl = opts.ttl || 0
     }
@@ -73,4 +73,4 @@ class ShortLink {
     }
 }
 
-module.exports = ShortLink;
+module.exports = TinyLink;
