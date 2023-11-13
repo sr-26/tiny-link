@@ -1,0 +1,36 @@
+{
+  "name": "lite-link",
+  "version": "1.0.0",
+  "description": "A lightweight Node.js module for shortening and managing URLs with ease, inspired by simplicity and efficiency.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Weasely",
+  "license": "MIT",
+  "dependencies": {
+    "ioredis": "^5.3.2",
+    "nanoid": "^3.0.0"
+  },
+  "keywords": [
+    "url",
+    "shorten",
+    "shortener",
+    "shorturl",
+    "lite",
+    "link",
+    "tinyurl",
+    "ioredis",
+    "redis",
+    "nanoid",
+    "utility"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sr-26/lite-link"
+  },
+  "bugs": {
+    "url": "https://github.com/sr-26/lite-link"
+  },
+  "homepage": "https://github.com/sr-26/lite-link#readme"
+}
