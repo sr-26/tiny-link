@@ -37,7 +37,7 @@ const longUrl = 'https://your-website.com/articles/article-title';
 
 // Shorten the URL using Lite-Link
 const shortKey = await liteLink.shortenUrl(longUrl);
-// Example Output: "hR-5deQs"
+// Example Output: "x7l8UcP-2XJpWvR_q0HkD"
 
 // Construct the short URL to be shared on social media
 const shortUrl = `https://your-short-domain/${shortKey}`;
