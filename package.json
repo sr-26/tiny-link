@@ -1,6 +1,6 @@
 {
   "name": "tiny-link",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight Node.js module for shortening and managing URLs with ease, inspired by simplicity and efficiency.",
   "main": "index.js",
   "scripts": {

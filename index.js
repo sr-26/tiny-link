@@ -73,4 +73,4 @@ class TinyLink {
     }
 }
 
-module.exports = TinyLink;
+module.exports = {TinyLink};
