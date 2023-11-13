@@ -7,7 +7,7 @@ LiteLink is a simple Node.js module that provides URL shortening functionality u
 To use LiteLink in your Node.js project, install it via npm:
 
 ```bash
-npm install litelink
+npm install lite-link
 ```
 
 
@@ -20,10 +20,11 @@ Example:
 Step 1: Initialize LiteLink
 
 ```javascript
-const { LiteLink } = require('litelink');
+const { LiteLink } = require('lite-link');
+const Redis = require('ioredis');
 
-// Assume you have an active Redis client
-const redisClient = /* Your Redis client configuration */;
+// Create an ioredis instance
+const redisClient = new Redis();
 
 // Create an instance of LiteLink with your Redis client
 const liteLink = new LiteLink({ client: redisClient });
@@ -42,6 +43,7 @@ const shortUrl = `https://your-short-domain/${shortKey}`;
 
 // Now, users can share the short URL on social media platforms
 console.log('Shortened URL for Social Media:', shortUrl);
+// Example Output: "hR-5deQs"
 ```
 
 Step 3: Handling Redirects
@@ -66,7 +68,11 @@ This use case demonstrates how LiteLink can enhance the user experience by simpl
 ## Usage
 
 ```javascript
-const { LiteLink } = require('litelink');
+const { LiteLink } = require('lite-link');
+const Redis = require('ioredis');
+
+// Create an ioredis instance
+const yourRedisClient = new Redis();
 
 // Create an instance of LiteLink with your Redis client
 const liteLink = new LiteLink({ client: yourRedisClient });
@@ -95,26 +101,26 @@ LiteLink supports the following configuration options:
 
 ###### Methods
 
-**shortenUrl(originalUrl, ttlInSeconds)**
+**1. shortenUrl(originalUrl, ttlInSeconds)**
 
 Shortens a URL and returns the generated short key.
 
 - originalUrl: The original URL to be shortened.
 - ttlInSeconds (optional): Time-to-live for the short URL in seconds. Overrides the default TTL.
 
-**getOriginalUrl(shortKey)**
+**2. getOriginalUrl(shortKey)**
 
 Retrieves the original URL for a given short key.
 
 - shortKey: The short key to look up.
 
-**deleteKey(shortKey)**
+**3. deleteKey(shortKey)**
 
 Clears (deletes) a specific key from Redis.
 
 - shortKey: The short key to clear.
 
-**flushKeys()**
+**4. flushKeys()**
 
 Clears (deletes) all keys with the configured prefix from Redis.
 
